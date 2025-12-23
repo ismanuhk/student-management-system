@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h3>Add Student</h3>
+
+<form method="POST" class="card p-4 shadow bg-white">
+{% csrf_token %}
+
+<input class="form-control mb-3" name="name" placeholder="Name">
+<input class="form-control mb-3" name="email" placeholder="Email">
+<input class="form-control mb-3" name="phone" placeholder="Phone">
+
+<select class="form-control mb-3" name="course">
+  {% for c in courses %}
+  <option value="{{ c.id }}">{{ c.course_name }}</option>
+  {% endfor %}
+</select>
+
+<input class="form-control mb-3" type="date" name="dob">
+<textarea class="form-control mb-3" name="address" placeholder="Address"></textarea>
+
+<button class="btn btn-success">Save</button>
+<a href="/" class="btn btn-secondary">Back</a>
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+<form method="POST">
+{% csrf_token %}
+<input name="name" value="{{ student.name }}">
+<input name="email" value="{{ student.email }}">
+<input name="phone" value="{{ student.phone }}">
+<select name="course">
+{% for c in courses %}
+<option value="{{ c.id }}" {% if c == student.course %}selected{% endif %}>
+{{ c.course_name }}
+</option>
+{% endfor %}
+</select>
+<input type="date" name="dob" value="{{ student.dob|date:'Y-m-d' }}">
+<textarea name="address">{{ student.address }}</textarea>
+<button>Update</button>
+</form>
